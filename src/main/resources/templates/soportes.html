@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Soporte Técnico</title>
+</head>
+<body>
+<h1>Gestión de Soporte Técnico</h1>
+
+<form th:action="@{/soportes/agregar}" method="post">
+    <label>ID:</label><input type="number" name="id" required><br>
+    <label>Nombre:</label><input type="text" name="nombre" required><br>
+    <label>Email:</label><input type="email" name="email" required><br>
+    <label>Especialidad:</label><input type="text" name="especialidad" required><br>
+    <label>Disponibilidad:</label><input type="text" name="disponibilidad" required><br>
+    <label>Teléfono:</label><input type="text" name="telefono"><br>
+    <label>Observaciones:</label><input type="text" name="observaciones"><br>
+    <button type="submit">Agregar Soporte</button>
+</form>
+
+<hr>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Especialidad</th>
+        <th>Disponibilidad</th>
+        <th>Teléfono</th>
+        <th>Observaciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="soporte : ${soportes}">
+        <td th:text="${soporte.id}">1</td>
+        <td th:text="${soporte.nombre}">Pedro Soto</td>
+        <td th:text="${soporte.email}">pedro@example.com</td>
+        <td th:text="${soporte.especialidad}">Redes</td>
+        <td th:text="${soporte.disponibilidad}">Lunes a Viernes</td>
+        <td th:text="${soporte.telefono}">123456789</td>
+        <td th:text="${soporte.observaciones}">Revisar equipamiento de laboratorio</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

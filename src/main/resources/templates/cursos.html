@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Cursos</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Listado de Cursos</h1>
+
+<form th:action="@{/cursos/agregar}" method="post">
+    <label>Nombre:</label><input type="text" name="name"><br>
+    <label>Descripción:</label><input type="text" name="description"><br>
+    <label>Fecha:</label><input type="date" name="fecha"><br>
+    <label>Hora:</label><input type="time" name="horaCurso"><br>
+    <button type="submit">Agregar Curso</button>
+</form>
+
+<hr>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="curso : ${cursos}">
+        <td th:text="${curso.id}">1</td>
+        <td th:text="${curso.name}">Programación</td>
+        <td th:text="${curso.description}">Intro a Java</td>
+        <td th:text="${curso.fecha}">2025-05-20</td>
+        <td th:text="${curso.horaCurso}">10:00</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

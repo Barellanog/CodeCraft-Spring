@@ -9,23 +9,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table (name = "Estudiante")
+@Table(name = "Gerente")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Estudiante {
+public class Gerente {
 
     @Id
-    private int id;
+    public int id;
     @Column(nullable = false)
-    private String nombre; //nombre completo
+    public String nombre; // nombre completo
     @Column(nullable = false, length = 50)
-    private int edad;
+    public String email;
     @Column(nullable = false)
-    private char genero;
+    public String rol; // Ejemplo: "Gerente de Curso"
     @Column(nullable = false)
-    private String correo;
+    public int cursosAsignados;// Lista de reportes generados por el gerente
     @Column(nullable = false)
-    private int telefono;
-
+    public String reportesGenerados;//Lista de reportes generados por el gerente
 }
