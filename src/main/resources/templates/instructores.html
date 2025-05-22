@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Lista de Instructores</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+<h1>Listado de Instructores</h1>
+
+<form th:action="@{/instructores/agregar}" method="post">
+  <label>Nombre:</label><input type="text" name="nombre"><br>
+  <label>Correo:</label><input type="email" name="correo"><br>
+  <label>Teléfono:</label><input type="number" name="telefono"><br>
+  <label>Dirección:</label><input type="text" name="direccion"><br>
+  <label>ID del Curso:</label><input type="number" name="curso.id"><br>
+  <button type="submit">Agregar Instructor</button>
+</form>
+
+<hr>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Correo</th>
+    <th>Teléfono</th>
+    <th>Dirección</th>
+    <th>Curso</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="instructor : ${instructores}">
+    <td th:text="${instructor.id}">1</td>
+    <td th:text="${instructor.nombre}">Carlos Rivas</td>
+    <td th:text="${instructor.correo}">carlos@example.com</td>
+    <td th:text="${instructor.telefono}">912345678</td>
+    <td th:text="${instructor.direccion}">Avenida 123</td>
+    <td th:text="${instructor.curso.name}">Programación Java</td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

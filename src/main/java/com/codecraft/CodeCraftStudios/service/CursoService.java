@@ -1,9 +1,11 @@
 package com.codecraft.CodeCraftStudios.service;
 
 import com.codecraft.CodeCraftStudios.model.Curso;
+import com.codecraft.CodeCraftStudios.model.Instructor;
 import com.codecraft.CodeCraftStudios.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -12,6 +14,9 @@ public class CursoService {
 
     @Autowired
     private CursoRepository cursoRepository;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     public List<Curso> getCursos() {return cursoRepository.obtenerCursos();}
 
@@ -26,4 +31,8 @@ public class CursoService {
         return "Curso eliminado";
     }
 
+    public Instructor getInstructorById(int idInstructor) {
+        String url = "http://localhost:8081/api/v1/instructores/" + idInstructor;
+        return restTemplate.getForObject(url, Instructor.class);
+    }
 }

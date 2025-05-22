@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Gerentes</title>
+</head>
+<body>
+<h1>Gestión de Gerentes</h1>
+
+<form th:action="@{/gerentes/agregar}" method="post">
+    <label>ID:</label><input type="number" name="id" required><br>
+    <label>Nombre:</label><input type="text" name="nombre" required><br>
+    <label>Email:</label><input type="email" name="email" required><br>
+    <label>Rol:</label><input type="text" name="rol" required><br>
+    <label>Cursos Asignados:</label><input type="number" name="cursosAsignados" required><br>
+    <label>Reportes Generados:</label><input type="text" name="reportesGenerados" required><br>
+    <button type="submit">Agregar Gerente</button>
+</form>
+
+<hr>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Rol</th>
+        <th>Cursos Asignados</th>
+        <th>Reportes Generados</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="gerente : ${gerentes}">
+        <td th:text="${gerente.id}">1</td>
+        <td th:text="${gerente.nombre}">Ana Ríos</td>
+        <td th:text="${gerente.email}">ana@example.com</td>
+        <td th:text="${gerente.rol}">Gerente de Curso</td>
+        <td th:text="${gerente.cursosAsignados}">3</td>
+        <td th:text="${gerente.reportesGenerados}">Informe 1, Informe 2</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
